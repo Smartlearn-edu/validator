@@ -383,6 +383,9 @@ def parse_validate(output: str, exit_code: int) -> dict:
             
         if line.startswith(">"):
             checks.append(line[1:].strip())
+        elif line.startswith("!"):
+            # Info or warnings, treat as checks or ignore
+            checks.append(line.strip())
         else:
             errors.append(line)
             
